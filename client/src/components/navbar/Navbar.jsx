@@ -24,6 +24,7 @@ const Navbar = () => {
       {!isAuth && <div className="navbar__registration"><NavLink to="/registration" >Registration</NavLink></div>}
       {isAuth && <div className="navbar__login"><NavLink to="/list">Users list</NavLink></div>}
       {isAuth && <div className="navbar__login"><NavLink to="/">Profile</NavLink></div>}
+      {isAuth && <div className="navbar__login"><NavLink to="/">Edit user</NavLink></div>}
       {isAuth && <div className="navbar__login" onClick={submitHandlerLogout} >Logout</div>}
     </div>
   )
