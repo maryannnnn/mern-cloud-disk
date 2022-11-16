@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "server": "npm run start --prefix server",
+    "client": "npm run start --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "cross-env": "^7.0.3",
+    "nodemon": "^2.0.12"
+  },
+  "dependencies": {
+    "cookie-parser": "^1.4.6"
+  },
+  "name": "mern-cloud-disk",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maryannnnn/mern-cloud-disk.git"
+  },
+  "author": "Neolines",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/maryannnnn/mern-cloud-disk/issues"
+  },
+  "homepage": "https://github.com/maryannnnn/mern-cloud-disk#readme",
+  "description": ""
+}

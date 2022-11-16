@@ -1,0 +1,4 @@
+cloudname
+gVZLXswtNdaNQm2m
+
+mongodb+srv://cloudname:gVZLXswtNdaNQm2m@cloud.yqkg3pg.mongodb.net/cloud?retryWrites=true&w=majority

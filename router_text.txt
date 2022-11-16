@@ -1,0 +1,25 @@
+userRouter.post(
+  '/registration', validationsSum,
+  expressAsyncHandler(async (req, res) => {
+    const errorFormatter = ({ location, msg, param, value, nestedErrors }) => {
+      return ` Error: ${msg}`
+  };
+    const result = validationResult(req).formatWith(errorFormatter)
+      if (!result.isEmpty()) {
+        return res.json({ message: result.array(), errors: result.array() })
+  }
+
+    const candidate = await User.findOne({ email: req.body.email })
+      if(candidate) {
+        return res.status(400).json({message: "User with email already exist"})
+      }
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: bcrypt.hashSync(req.body.password, 8),
+      roles: ['USER']
+    })
+    await user.save()
+      res.json({message: "User was created"})
+  })
+)
