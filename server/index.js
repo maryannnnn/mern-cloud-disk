@@ -7,6 +7,7 @@ const path = require("path")
 //const corsMiddleware = require('./middleware/cors.middleware')
 const authRouter = require("./routes/authRouter")
 const userRouter = require("./routes/userRouter")
+const fileRouter = require("./routes/fileRouter")
 
 const app = express()
  app.use(express.json())
@@ -14,6 +15,7 @@ const app = express()
  //app.use(corsMiddleware)
  app.use('/api/auth', authRouter)
  app.use('/api/user', userRouter)
+ app.use('/api/file', fileRouter)
 
  const dirname = path.resolve();
 

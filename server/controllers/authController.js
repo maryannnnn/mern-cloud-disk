@@ -4,6 +4,8 @@ const uuid = require('uuid')
 const {sendActivationMail} = require('../service/mail-service')
 const {validationAuth, generatorPasswordStrong } = require('../service/user-service')
 const tokenService = require("../service/token-service")
+const {createDir} = require('../service/file-service')
+const File = require('../models/File')
 
 
 class authController {
@@ -36,6 +38,8 @@ class authController {
         
         sendActivationMail(user.email, `${process.env.API_URL}/api/auth/activate/${activationLink}`)
         await user.save()
+        const file = new File({user: user.id, name: '', type: ''})
+        await createDir(file)
         const tokens = tokenService.generateFullTokens(user._id, user.email)
         await tokenService.saveToken(user._id, tokens.refreshToken)
         res.cookie('refreshToken', tokens.refreshToken, {maxAge: 30 * 24 * 60 * 60 * 1000, httpOnly: true})
