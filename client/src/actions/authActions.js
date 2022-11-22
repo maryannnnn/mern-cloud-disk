@@ -12,7 +12,7 @@ import {  USER_REGISTER_REQUEST,
 export const registration = ({name, email, password, passwordConfirm}) => async (dispatch) => {
   dispatch({ type: USER_REGISTER_REQUEST, payload: { email, password }})
   try {
-    const response = await $api.post('/api/auth/registration', {
+    const response = await axios.post('/api/auth/registration', {
       name,
       email,
       password,
